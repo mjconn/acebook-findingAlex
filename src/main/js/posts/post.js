@@ -13,7 +13,7 @@ const Post = (props) => {
 				{props.post.userName}
 				</p>
 				<p>
-				at: {props.post.date}
+				{props.post.date}
 				</p>
 			</div>
 		</div>
