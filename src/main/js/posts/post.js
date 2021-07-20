@@ -15,8 +15,11 @@ const Post = (props) => {
 			
               <div class="status-container border-a">
                   <div class="actions">
-					  <p><a href="#" title="Edit">Edit</a></p>
-                      <p><a href="#" title="Like">Like</a></p>
+					  <a href="#" title="Edit">Edit</a>
+					  <span> - </span>
+                      <a href="#" title="Delete">Delete</a>
+					  <span> - </span>
+                      <a href="#" title="Like">Like</a>
 				  </div>
 			  </div>
 			   <div class="actions">
@@ -26,7 +29,7 @@ const Post = (props) => {
 					<p>
 					<a href={props.post._links.self.href}>Linky</a>
 					</p>	
-				  </div>
+				</div>
 		  </div>
 		</div>
 	</div>
