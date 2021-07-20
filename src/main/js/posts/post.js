@@ -15,10 +15,8 @@ const Post = (props) => {
 			
               <div class="status-container border-a">
                   <div class="actions">
-					  <a href="#" title="Edit">Edit</a>
-					  <span> - </span>
-                      <a href="#" title="Delete">Delete</a>
-					  <span> - </span>
+					  <button onClick={ () => this.editPost(props.id)} className="btn btn-success">Edit</button> 
+					  <button onClick={ () => this.deletePost(props.id)} className="btn btn-danger">Delete</button> 
                       <a href="#" title="Like">Like</a>
 				  </div>
 			  </div>

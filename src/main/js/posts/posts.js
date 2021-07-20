@@ -27,6 +27,7 @@ class Posts extends React.Component {
       <Post key={post._links.self.href} post={post} id={ExtractID.extractID(post._links.self.href)}/>    )
     .reverse();
   }
+  
 }
 
 export default Posts;
