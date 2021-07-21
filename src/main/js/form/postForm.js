@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import GetDate from './getDate';
+import GetDate from '../utils/getDate';
 
 
 class PostForm extends React.Component {
@@ -36,9 +36,7 @@ class PostForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('Your post was submitted, ' + this.state.username);
     event.preventDefault();
-
     axios({
       method: 'post',
       url: '/api/posts',
@@ -51,6 +49,7 @@ class PostForm extends React.Component {
       }
     });
     setTimeout(location.reload.bind(location), 3000);
+    alert('Your post was submitted, ' + this.state.username);
   };
 
 

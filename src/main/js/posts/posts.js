@@ -1,6 +1,6 @@
 import React from 'react';
 import Post from './post';
-import ExtractID from './ExtractID';
+import ExtractID from '../utils/ExtractID';
 
 class Posts extends React.Component {
   constructor(props) {
