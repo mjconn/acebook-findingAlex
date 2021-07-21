@@ -2,7 +2,7 @@
  import axios from 'axios';
  // import EditForm from '../form/editForm';
  // import PostForm from '../form/postForm';
- import GetDate from '../form/getDate';
+import GetDate from '../utils/getDate';
 
 
 const deletePost = (id) => {
@@ -13,8 +13,8 @@ const deletePost = (id) => {
 const handleDeleteClick = (id) => {
 	event.preventDefault();
 	deletePost(id);
+  setTimeout(location.reload.bind(location), 3000);
 	alert('Post deleted, please wait for page reload');
-	setTimeout(location.reload.bind(location), 3000);
 }
 
 
@@ -38,17 +38,11 @@ const Post = (props) => {
       // setNewContent(event.target.value);
       // console.log(updatedContent);
       tempContent = event.target.value;
-      console.log('in handle' + tempContent);
+      // console.log('in handle' + tempContent);
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(tempContent);
-    setNewContent(tempContent);
-    console.log(updatedContent);
-    alert('Your post was updated');
-
-
     axios({
       method: 'put',
       url: `/api/posts/${props.id}`,
@@ -61,7 +55,15 @@ const Post = (props) => {
       }
     });
     setTimeout(location.reload.bind(location), 3000);
+    alert('Your post was updated');
   };
+    // console.log(tempContent);
+    // setNewContent(tempContent);
+    // console.log(updatedContent);
+
+
+
+
 
   // const EditForm = () => <div><PostForm /></div>;
 
@@ -94,8 +96,6 @@ const Post = (props) => {
               <div class="status-container border-a">
                   <div class="actions">
 
-					  <p><a href="#" title="Edit">Edit</a></p>
-
 					<p>
             <button class='btn btn-secondary' onClick={() => setCount(count + 1)}> &#128077;({count}) </button>
   					<span>       </span>
@@ -103,13 +103,12 @@ const Post = (props) => {
             <span>       </span>
             <button class='btn btn-danger' onClick={() => { handleDeleteClick(props.id) }}> Delete </button>
           </p>
-
+            <div>
+              {showEditForm ? <InLineEditForm /> : null}
+            </div>
 				  </div>
 			  </div>
-			  
-          <div>
-            {showEditForm ? <InLineEditForm /> : null}
-          </div>
+
 		  </div>
 		</div>
 	</div>
