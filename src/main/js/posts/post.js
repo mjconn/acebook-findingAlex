@@ -1,6 +1,21 @@
-import React from 'react';
+ import React, { useState } from 'react'; 
+ import axios from 'axios';
+
+ 
+const deletePost = (id) => {
+		axios.delete(`/api/posts/${id}`)
+			/* .then(() => setStatus('Delete successful'));*/ 
+	}
+
+const handleDeleteClick = (id) => {
+	event.preventDefault();
+	deletePost(id);
+	alert('Post deleted, please wait for page reload');
+	setTimeout(location.reload.bind(location), 3000);
+}
 
 const Post = (props) => {
+	const [count, setCount] = useState(0); 
 	return (
 		
 	<div class="container">
@@ -15,9 +30,13 @@ const Post = (props) => {
 			
               <div class="status-container border-a">
                   <div class="actions">
-					  <button onClick={ () => this.editPost(props.id)} className="btn btn-success">Edit</button> 
-					  <button onClick={ () => this.deletePost(props.id)} className="btn btn-danger">Delete</button> 
-                      <a href="#" title="Like">Like</a>
+
+					<a href="#" title="Edit">Edit</a>
+					
+					<button class='btn btn-secondary' onClick={() => setCount(count + 1)}> &#128077;({count}) </button>
+					
+					<button class='btn btn-danger' onClick={() => { handleDeleteClick(props.id) }}> Delete </button>		
+	
 				  </div>
 			  </div>
 			   <div class="actions">
