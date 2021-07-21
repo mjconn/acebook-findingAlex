@@ -23,14 +23,16 @@ public class Post {
     private String content;
     private String userName;
     private String date;
+    private int likes;
 
     private Post() {}
 
-    public Post(String content) {
+    public Post(String content, String date, int likes) {
         this.setContent(content);
         this.setUserName("TestUser123");
-        this.createDateTimeStamp();
-    }
+        this.date = date;
+        this.likes = likes;
+        }
     
     public void createDateTimeStamp() {
     	DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
@@ -39,6 +41,7 @@ public class Post {
         
         this.setDate(dateTimeFormatter.format(now));
       }
+    
 
 	public String getUserName() {
 		return userName;

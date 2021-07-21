@@ -61,9 +61,7 @@ const Post = (props) => {
     // setNewContent(tempContent);
     // console.log(updatedContent);
 
-
-
-
+  console.log(props.post.likes);
 
   // const EditForm = () => <div><PostForm /></div>;
 
