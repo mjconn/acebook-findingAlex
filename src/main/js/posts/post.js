@@ -96,12 +96,13 @@ const Post = (props) => {
               <div class="status-container border-a">
                   <div class="actions">
 					<p>
-            <button class='btn btn-secondary' onClick={() => setCount(count + 1)}> &#128077;({count}) </button>
+            <button class='btn btn-secondary' onClick={() => setCount(count + 1)}> &#128077;({props.post.likes}) </button>
   					<span>       </span>
             <button class='btn btn-warning' onClick={onEditBtnClick}> Edit </button>
             <span>       </span>
             <button class='btn btn-danger' onClick={() => { handleDeleteClick(props.id) }}> Delete </button>
           </p>
+          Number of likes: {props.post.likes}
             <div>
               {showEditForm ? <InLineEditForm /> : null}
             </div>
