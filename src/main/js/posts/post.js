@@ -19,7 +19,7 @@ const handleDeleteClick = (id) => {
 
 
 const Post = (props) => {
-	const [count, setCount] = useState(0);
+	const [count, setCount] = useState(props.post.likes);
   const [showEditForm, setShowEditForm] = useState(false);
   const [updatedContent, setNewContent] = useState(props.post.content);
   let tempContent = '';
@@ -32,6 +32,30 @@ const Post = (props) => {
     };
   };
 
+  const onLikeBtnClick = () => {
+    // Increment likes
+    // axios put update
+
+    let incremented = props.post.likes + 1;
+    setCount(incremented);
+    axios({
+      method: 'put',
+      url: `/api/posts/${props.id}`,
+      headers: { 'Content-Type': 'application/json' },
+      data: {
+        userName: props.post.userName,
+        content: props.post.content,
+        id: props.id,
+        date: props.post.date,
+        likes: incremented
+      }
+    });
+    likeBtnToggle();
+  }
+
+  const likeBtnToggle = () => {
+    // change colour/outline/'unlike'
+  }
 
   const handleContentChange = (event) => {
       // console.log(event.target.value);
@@ -96,13 +120,12 @@ const Post = (props) => {
               <div class="status-container border-a">
                   <div class="actions">
 					<p>
-            <button class='btn btn-secondary' onClick={() => setCount(count + 1)}> &#128077;({props.post.likes}) </button>
+            <button class='btn btn-secondary' onClick={onLikeBtnClick}> &#128077;({count}) </button>
   					<span>       </span>
             <button class='btn btn-warning' onClick={onEditBtnClick}> Edit </button>
             <span>       </span>
             <button class='btn btn-danger' onClick={() => { handleDeleteClick(props.id) }}> Delete </button>
           </p>
-          Number of likes: {props.post.likes}
             <div>
               {showEditForm ? <InLineEditForm /> : null}
             </div>

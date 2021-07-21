@@ -37,8 +37,6 @@ public class Post {
         this.content = content;
         this.date = date;
         this.likes = likes;
-        // this.user_id = user_id;
-
     }
 
 //     public void createDateTimeStamp() {
