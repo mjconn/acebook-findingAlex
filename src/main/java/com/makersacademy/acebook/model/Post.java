@@ -20,23 +20,25 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String content;
-    private String userName;
-    private String date;
-    private int likes;
+    public String content;
+    public String userName;
+    public String date;
+    public int likes;
 
     private Post() {}
 
-    // public Post(String content) {
-    //     this.setContent(content);
-    //     this.setUserName("");
-    //     this.setDate("");
-    // }
+    public Post(String content) {
+        this.setContent(content);
+        this.setUserName("");
+        this.setDate("");
+        this.likes = 0;
+    }
 
-    public Post(String content, String date, int likes) {
+    public Post(String content, String date, int likes, String userName) {
         this.content = content;
         this.date = date;
         this.likes = likes;
+        this.userName = userName;
     }
 
 //     public void createDateTimeStamp() {

@@ -23,9 +23,11 @@ class Posts extends React.Component {
 	}
 
   getPosts() {
-    return this.props.posts.map(post =>
-      <Post key={post._links.self.href} post={post} id={ExtractID.extractID(post._links.self.href)}/>    )
-  }
+  return this.props.posts.map(post =>
+    <Post key={post.id} post={post} id={post.id}/>
+  );
+}
+
 
   getPostsSortedByID() {
     let posts = this.getPosts();
