@@ -6,9 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.GenerationType;
-import java.time.format.DateTimeFormatter;  
-import java.time.LocalDateTime; 
-import java.util.Date;
+// import java.time.format.DateTimeFormatter;
+// import java.time.LocalDateTime;
+// import java.util.Date;
 
 import lombok.Data;
 
@@ -27,21 +27,26 @@ public class Post {
 
     private Post() {}
 
+    // public Post(String content) {
+    //     this.setContent(content);
+    //     this.setUserName("");
+    //     this.setDate("");
+    // }
+
     public Post(String content, String date, int likes) {
-        this.setContent(content);
-        this.setUserName("TestUser123");
+        this.content = content;
         this.date = date;
         this.likes = likes;
-        }
-    
-    public void createDateTimeStamp() {
-    	DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-    	LocalDateTime now = LocalDateTime.now();  
-//    	System.out.println(dateTimeFormatter.format(now));  
-        
-        this.setDate(dateTimeFormatter.format(now));
-      }
-    
+    }
+
+//     public void createDateTimeStamp() {
+//     	DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+//     	LocalDateTime now = LocalDateTime.now();
+// //    	System.out.println(dateTimeFormatter.format(now));
+//
+//         this.setDate(dateTimeFormatter.format(now));
+//       }
+
 
 	public String getUserName() {
 		return userName;
