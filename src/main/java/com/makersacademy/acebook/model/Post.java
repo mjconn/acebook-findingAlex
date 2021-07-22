@@ -19,7 +19,7 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
     public String content;
     public String userName;
     public String date;
@@ -34,11 +34,12 @@ public class Post {
         this.likes = 0;
     }
 
-    public Post(String content, String date, int likes, String userName) {
+    public Post(String content, String date, int likes, String userName, Long id) {
         this.content = content;
         this.date = date;
         this.likes = likes;
         this.userName = userName;
+        this.id = id;
     }
 
 //     public void createDateTimeStamp() {

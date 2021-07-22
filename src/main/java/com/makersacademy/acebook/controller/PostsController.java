@@ -25,7 +25,7 @@ public class PostsController {
         ArrayList<Post> shouty_posts = new ArrayList<Post>();
         posts.forEach(post -> {
             shouty_posts.add(
-                    new Post(post.content.toUpperCase(), post.date, post.likes, post.userName)
+                    new Post(post.content.toUpperCase(), post.date, post.likes, post.userName, post.id)
             );
         });
         return shouty_posts;

@@ -33,6 +33,7 @@ const Post = (props) => {
   };
 
   const onLikeBtnClick = () => {
+    console.log(props)
     if (postLiked === false) {
       handleLikesChange(1);
       setLikedStatus(true);
