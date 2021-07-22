@@ -1,7 +1,6 @@
  import React, { useState } from 'react';
  import axios from 'axios';
  // import EditForm from '../form/editForm';
- // import PostForm from '../form/postForm';
 import GetDate from '../utils/getDate';
 
 
@@ -22,7 +21,8 @@ const Post = (props) => {
 	const [count, setCount] = useState(props.post.likes);
   const [showEditForm, setShowEditForm] = useState(false);
   const [updatedContent, setNewContent] = useState(props.post.content);
-  let tempContent = '';
+  const [postLiked, setLikedStatus] = useState(false);
+  let tempContent;
 
   const onEditBtnClick = () => {
     if (showEditForm === false) {
@@ -33,10 +33,17 @@ const Post = (props) => {
   };
 
   const onLikeBtnClick = () => {
-    // Increment likes
-    // axios put update
+    if (postLiked === false) {
+      handleLikesChange(1);
+      setLikedStatus(true);
+    } else {
+      handleLikesChange(-1);
+      setLikedStatus(false);
+    }
+  };
 
-    let incremented = props.post.likes + 1;
+  const handleLikesChange = (like) => {
+    let incremented = count + like;
     setCount(incremented);
     axios({
       method: 'put',
@@ -50,11 +57,6 @@ const Post = (props) => {
         likes: incremented
       }
     });
-    likeBtnToggle();
-  }
-
-  const likeBtnToggle = () => {
-    // change colour/outline/'unlike'
   }
 
   const handleContentChange = (event) => {
@@ -120,7 +122,7 @@ const Post = (props) => {
               <div class="status-container border-a">
                   <div class="actions">
 					<p>
-            <button class='btn btn-secondary' onClick={onLikeBtnClick}> &#128077;({count}) </button>
+            <button id='likeBtn' class={postLiked ? 'btn btn-success' : 'btn btn-secondary'} onClick={onLikeBtnClick}> &#128077;({count}) </button>
   					<span>       </span>
             <button class='btn btn-warning' onClick={onEditBtnClick}> Edit </button>
             <span>       </span>
