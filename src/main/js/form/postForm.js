@@ -9,7 +9,8 @@ class PostForm extends React.Component {
     this.state = {
       value: '',
       username: '',
-      content: ''
+      content: '',
+      // id: '',
     };
 
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -37,18 +38,37 @@ class PostForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    axios({
+    // var headers = {
+    //   'Content-Type': 'application/json'
+    // }
+    // const postData = {
+    //     "userName" : this.state.username,
+    //     "id" : this.state.id,
+    //     "content" : this.state.content,
+    //     "date" : `posted ${GetDate.getDate()}`,
+    //     "likes" : 0
+    // };
+    //
+    // axios.post('/api/posts',{postData}, {headers})
+    //     .then(res => console.log(res.data))
+    // console.log(postData);
+
+    const request = axios({
       method: 'post',
       url: '/api/posts',
       headers: { 'Content-Type': 'application/json' },
       data: {
         userName: this.state.username,
+
+        // id: this.state.id,
         content: this.state.content,
-        id: this.state.id,
         date: `posted ${GetDate.getDate()}`,
         likes: 0
       }
     });
+    // request;
+    console.log(request);
+    request;
     setTimeout(location.reload.bind(location), 3000);
     alert('Your post was submitted, ' + this.state.username);
   };
