@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import GetDate from '../utils/getDate';
 
+const client = require('../client');
+
 
 class PostForm extends React.Component {
   constructor(props) {
@@ -12,7 +14,6 @@ class PostForm extends React.Component {
       content: '',
       // id: '',
     };
-
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleContentChange = this.handleContentChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -53,23 +54,38 @@ class PostForm extends React.Component {
     //     .then(res => console.log(res.data))
     // console.log(postData);
 
-    const request = axios({
-      method: 'post',
-      url: '/api/posts',
-      headers: { 'Content-Type': 'application/json' },
-      data: {
-        userName: this.state.username,
+    // console.log(this.state.content);
+    // console.log(this.state.username);
+    // const newPost = {
+    //   userName: this.state.username,
+    //   // id: this.state.id,
+    //   content: this.state.content,
+    //   date: `posted ${GetDate.getDate()}`,
+    //   likes: 0
+    //   };
+    //
+    // client({ method: 'POST', path: '/api/posts', entity: newPost }).then(response => {
+    //   location.reload();
+    //   });
 
-        // id: this.state.id,
-        content: this.state.content,
-        date: `posted ${GetDate.getDate()}`,
-        likes: 0
-      }
-    });
-    // request;
-    console.log(request);
-    request;
-    setTimeout(location.reload.bind(location), 3000);
+
+      const request = axios({
+        method: 'post',
+        url: '/api/posts',
+        headers: { 'Content-Type': 'application/json' },
+        data: {
+          userName: this.state.username,
+
+          // id: this.state.id,
+          content: this.state.content,
+          date: `posted ${GetDate.getDate()}`,
+          likes: 0
+        }
+      });
+      request;
+      console.log(request);
+      request;
+      setTimeout(location.reload.bind(location), 3000);
     alert('Your post was submitted, ' + this.state.username);
   };
 
@@ -85,6 +101,6 @@ class PostForm extends React.Component {
         </div>
         );
       }
-    }
+}
 
 export default PostForm;

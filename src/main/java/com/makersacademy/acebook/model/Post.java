@@ -47,8 +47,6 @@ public class Post {
         this.setDate(date);
         this.setLikes(likes);
         this.setUserName(userName);
-        this.setID(id);
-
     }
 
     public Post(String content, String date, int likes, String userName, Long id) {

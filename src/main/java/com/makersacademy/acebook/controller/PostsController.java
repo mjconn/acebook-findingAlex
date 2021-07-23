@@ -18,6 +18,7 @@ import java.util.Dictionary;
 
 
 @RestController
+// @RequestMapping("posts")
 public class PostsController {
 
     @Autowired
@@ -36,8 +37,22 @@ public class PostsController {
         return shouty_posts;
     }
 
-    // public Iterable<Post> index() {
-    //     return postRepository.findAll();
+    @PostMapping("/api/posts")
+      public Post save(@RequestBody Post newPost) {
+      return postRepository.save(newPost);
+    }
+
+    // @PutMapping("/api/posts/{id}")
+    // consumes={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
+    // produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE} )
+    //
+    // public Post updatePost(@PathVariable String postId, @RequestBody Post post)    {
+    //     Post returnValue = new Post();
+    //     UserDto userDto = new UserDto();
+    //     BeanUtils.copyProperties(requestUserDetails, userDto);
+    //     UserDto updatedUserDetails = userService.updateUser(userDto, userId);
+    //     BeanUtils.copyProperties(updatedUserDetails, returnValue);
+    //     return returnValue;
     // }
 
 //     // GET one
@@ -58,11 +73,13 @@ public class PostsController {
     //   repository.save(new Post(df)
     // }
 
-    @PostMapping("/api/posts")
-    // @ResponseBody
-      Post newPost(@RequestBody Post newPost) {
-        return postRepository.save(newPost);
-      }
+    // @PostMapping("/api/posts")
+    // // @ResponseBody
+    //   Post newPost(@RequestBody Post newPost) {
+    //     return postRepository.save(newPost);
+    //   }
+
+
 
  //    @PostMapping("/api/posts")
  //    public Iterable<Post>create(@RequestBody Post post){
