@@ -3,6 +3,7 @@ package com.makersacademy.acebook.controller;
 
 import com.makersacademy.acebook.model.Post;
 
+
 import com.makersacademy.acebook.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,8 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.math.BigDecimal;
 
 import java.util.ArrayList;
 import java.util.Dictionary;
@@ -27,20 +26,34 @@ public class PostsController {
     //GET all
     @GetMapping("/api/posts")
     public Iterable<Post> index() {
-        Iterable<Post> posts = postRepository.findAll();
-        ArrayList<Post> shouty_posts = new ArrayList<Post>();
-        posts.forEach(post -> {
-            shouty_posts.add(
-                    new Post(post.content.toUpperCase(), post.date, post.likes, post.userName, post.id)
-            );
-        });
-        return shouty_posts;
+      Iterable<Post> posts = postRepository.findAll();
+      return posts;
     }
 
-    @PostMapping("/api/posts")
+    @PostMapping("/api/posts/add")
       public Post save(@RequestBody Post newPost) {
-      return postRepository.save(newPost);
+        System.out.println("****************" + newPost + "******************");
+       return postRepository.save(newPost);
     }
+
+}
+
+
+/////////////////////////////////////////
+
+    // public Iterable<Post> index() {
+    //     Iterable<Post> posts = postRepository.findAll();
+    //     ArrayList<Post> shouty_posts = new ArrayList<Post>();
+    //     posts.forEach(post -> {
+    //         shouty_posts.add(
+    //                 new Post(post.content.toUpperCase(), post.date, post.likes, post.userName, post.id)
+    //         );
+    //     });
+    //     System.out.println("****************" + "GET index done" + "******************");
+    //     return shouty_posts;
+
+
+
 
     // @PutMapping("/api/posts/{id}")
     // consumes={MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
@@ -90,7 +103,7 @@ public class PostsController {
  //   }
  // }
 
-}
+
 
 
 //    @RequestMapping( value = "/{id}", method = RequestMethod.GET )

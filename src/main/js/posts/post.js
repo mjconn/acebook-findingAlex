@@ -53,7 +53,7 @@ const Post = (props) => {
       data: {
         userName: props.post.userName,
         content: props.post.content,
-        id: props.id,
+
         date: props.post.date,
         likes: incremented
       }
@@ -77,7 +77,7 @@ const Post = (props) => {
       data: {
         userName: props.post.userName,
         content: tempContent,
-        id: props.id,
+        // id: props.id,
         date: `updated ${GetDate.getDate()}`,
         likes: count
       }
@@ -132,6 +132,9 @@ const Post = (props) => {
             <button class='btn btn-danger' onClick={() => { handleDeleteClick(props.id) }}> Delete </button>
           </p>
             <div>
+            <p>{console.log(props)}
+            {console.log(props.post)}
+            </p>
               {showEditForm ? <InLineEditForm /> : null}
             </div>
 				  </div>

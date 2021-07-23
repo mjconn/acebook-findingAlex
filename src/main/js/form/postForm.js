@@ -71,16 +71,14 @@ class PostForm extends React.Component {
 
       const request = axios({
         method: 'post',
-        url: '/api/posts',
+        url: '/api/posts/add',
         headers: { 'Content-Type': 'application/json' },
         data: {
-          userName: this.state.username,
-
-          // id: this.state.id,
           content: this.state.content,
           date: `posted ${GetDate.getDate()}`,
-          likes: 0
-        }
+          likes: 0,
+          userName: this.state.username,
+          }
       });
       request;
       console.log(request);

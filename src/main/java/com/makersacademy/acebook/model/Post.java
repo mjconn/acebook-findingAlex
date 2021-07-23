@@ -17,9 +17,9 @@ import lombok.Data;
 @Table(name = "POSTS")
 public class Post {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    // @Id
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public @Id @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
     public String content;
     public String userName;
     public String date;
@@ -101,7 +101,7 @@ public class Post {
 		return likes;
 	}
 
-	public void setContent(int likes) {
+	public void setLikes(int likes) {
 		this.likes = likes;
 	}
 
