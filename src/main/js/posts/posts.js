@@ -15,7 +15,7 @@ class Posts extends React.Component {
         <h1 className='posts-title'>
         </h1>
   			<div className='posts-items'>
-  				{this.getPosts()}
+  				{this.getPostsSortedByID()}
   			</div>
       </article>
     </div>
@@ -25,7 +25,12 @@ class Posts extends React.Component {
   getPosts() {
     return this.props.posts.map(post =>
       <Post key={post._links.self.href} post={post} id={ExtractID.extractID(post._links.self.href)}/>    )
-    .reverse();
+  }
+
+  getPostsSortedByID() {
+    let posts = this.getPosts();
+    let sorted = posts.sort((a, b) => a.props.id - b.props.id);
+    return sorted.reverse();
   }
 }
 

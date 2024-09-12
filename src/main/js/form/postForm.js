@@ -46,6 +46,7 @@ class PostForm extends React.Component {
         content: this.state.content,
         id: this.state.id,
         date: `posted ${GetDate.getDate()}`,
+        likes: 0
       }
     });
     setTimeout(location.reload.bind(location), 3000);
