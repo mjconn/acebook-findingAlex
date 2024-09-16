@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import GetDate from '../utils/getDate';
 
+const client = require('../client');
+
 
 class PostForm extends React.Component {
   constructor(props) {
@@ -9,9 +11,9 @@ class PostForm extends React.Component {
     this.state = {
       value: '',
       username: '',
-      content: ''
+      content: '',
+      // id: '',
     };
-
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleContentChange = this.handleContentChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -37,18 +39,51 @@ class PostForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    axios({
-      method: 'post',
-      url: '/api/posts',
-      headers: { 'Content-Type': 'application/json' },
-      data: {
-        userName: this.state.username,
-        content: this.state.content,
-        id: this.state.id,
-        date: `posted ${GetDate.getDate()}`,
-      }
-    });
-    setTimeout(location.reload.bind(location), 3000);
+    // var headers = {
+    //   'Content-Type': 'application/json'
+    // }
+    // const postData = {
+    //     "userName" : this.state.username,
+    //     "id" : this.state.id,
+    //     "content" : this.state.content,
+    //     "date" : `posted ${GetDate.getDate()}`,
+    //     "likes" : 0
+    // };
+    //
+    // axios.post('/api/posts',{postData}, {headers})
+    //     .then(res => console.log(res.data))
+    // console.log(postData);
+
+    // console.log(this.state.content);
+    // console.log(this.state.username);
+    // const newPost = {
+    //   userName: this.state.username,
+    //   // id: this.state.id,
+    //   content: this.state.content,
+    //   date: `posted ${GetDate.getDate()}`,
+    //   likes: 0
+    //   };
+    //
+    // client({ method: 'POST', path: '/api/posts', entity: newPost }).then(response => {
+    //   location.reload();
+    //   });
+
+
+      const request = axios({
+        method: 'post',
+        url: '/api/posts/add',
+        headers: { 'Content-Type': 'application/json' },
+        data: {
+          content: this.state.content,
+          date: `posted ${GetDate.getDate()}`,
+          likes: 0,
+          userName: this.state.username,
+          }
+      });
+      request;
+      console.log(request);
+      request;
+      setTimeout(location.reload.bind(location), 3000);
     alert('Your post was submitted, ' + this.state.username);
   };
 
@@ -64,6 +99,6 @@ class PostForm extends React.Component {
         </div>
         );
       }
-    }
+}
 
 export default PostForm;
